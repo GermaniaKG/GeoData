@@ -1,5 +1,11 @@
 # Germania KG · GeoData
 
+[![Build Status](https://travis-ci.org/GermaniaKG/GeoData.svg?branch=master)](https://travis-ci.org/GermaniaKG/GeoData)
+[![Code Coverage](https://scrutinizer-ci.com/g/GermaniaKG/GeoData/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/GeoData/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/GermaniaKG/GeoData/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/GeoData/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/GermaniaKG/GeoData/badges/build.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/GeoData/build-status/master)
+
+
 ## Interfaces 
 
 ### GeoDataProviderInterface
