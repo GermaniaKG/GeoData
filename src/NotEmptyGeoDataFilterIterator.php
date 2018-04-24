@@ -36,8 +36,7 @@ class NotEmptyGeoDataFilterIterator extends \FilterIterator
             return false;
         }
 
-        $status = !empty($item->getLatitude())
-              and !empty($item->getLongitude());
+        $status = (!empty($item->getLatitude()) and !empty($item->getLongitude()));
 
         return $status == $this->not_empty_status;
     }
