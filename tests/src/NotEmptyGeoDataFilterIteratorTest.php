@@ -49,9 +49,10 @@ class NotEmptyGeoDataFilterIteratorTest extends \PHPUnit\Framework\TestCase
 
         $mocks_iterator = new \ArrayIterator( $mocks);
 
+        $expected_count = 1;
         return array(
-            [ $mocks_iterator, 1 ],
-            [ new IteratorAggregator($mocks_iterator ), 1]
+            [ $mocks_iterator, $expected_count ],
+            [ new IteratorAggregator($mocks_iterator ), $expected_count ]
         );
     }
 }
