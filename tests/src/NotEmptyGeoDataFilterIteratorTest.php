@@ -10,13 +10,12 @@ class NotEmptyGeoDataFilterIteratorTest extends \PHPUnit\Framework\TestCase
     /**
      * @dataProvider provideGeoData
      */
-    public function testInstantiation( $data, $expected_count)
+    public function testInstantiation( $data, $valid_status, $expected_count)
     {
-
-        $sut = new NotEmptyGeoDataFilterIterator( $data );
+        $sut = new NotEmptyGeoDataFilterIterator( $data, $valid_status );
         $this->assertEquals( $expected_count, iterator_count( $sut ));
-
     }
+
 
     public function provideGeoData()
     {
@@ -49,10 +48,17 @@ class NotEmptyGeoDataFilterIteratorTest extends \PHPUnit\Framework\TestCase
 
         $mocks_iterator = new \ArrayIterator( $mocks);
 
-        $expected_count = 1;
+        // This is what we know from the above array
+        $valid_count = 1;
+        // so array count minus $valid_count must be the "inversion"
+        $invalid_count = count($mocks) - $valid_count;
+
         return array(
-            [ $mocks_iterator, $expected_count ],
-            [ new IteratorAggregator($mocks_iterator ), $expected_count ]
+            [ $mocks_iterator, true,  $valid_count ],
+            [ $mocks_iterator, false, $invalid_count ],
+
+            [ new IteratorAggregator($mocks_iterator ), true,  $valid_count ],
+            [ new IteratorAggregator($mocks_iterator ), false, $invalid_count ]
         );
     }
 }
