@@ -5,6 +5,14 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/GermaniaKG/GeoData/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/GeoData/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/GermaniaKG/GeoData/badges/build.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/GeoData/build-status/master)
 
+## Installation
+
+```bash
+$ composer require germania-kg/geodata
+```
+
+
+
 
 ## Interfaces 
 
