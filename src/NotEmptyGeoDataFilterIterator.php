@@ -32,13 +32,14 @@ class NotEmptyGeoDataFilterIterator extends \FilterIterator
         $item = $this->getInnerIterator()->current();
 
         // Disclose items not implementing GeoDataProviderInterface
-        if (!$item instanceOf GeoDataProviderInterface) {
-            return false;
+        if ($item instanceOf GeoDataProviderInterface) {
+            $status = (!empty($item->getLatitude()) and !empty($item->getLongitude()));
+
+            return ($status == $this->not_empty_status);
         }
 
-        $status = !empty($item->getLatitude())
-              and !empty($item->getLongitude());
+        // brainfuck: If filter-for-falsy is wanted, just invert the true
+        return !$this->not_empty_status;
 
-        return $status == $this->not_empty_status;
     }
 }
