@@ -5,37 +5,18 @@ trait GeoDataProviderTrait
 {
 
     /**
-     * @var float
+     * @var GeoDataInterface
      */
-    public $latitude;
+    public $geodata;
+
 
     /**
-     * @var float
+     * @return null|GeoDataInterface
      */
-    public $longitude;
-
-    /**
-     * @return float
-     */
-    public function getLatitude()
+    public function getGeoData()
     {
-        return $this->latitude;
+        return $this->geodata;
     }
 
-    /**
-     * @return float
-     */
-    public function getLongitude()
-    {
-        return $this->longitude;
-    }
-
-    /**
-     * @return array[float]
-     */
-    public function getLatLon()
-    {
-        return array($this->getLatitude(), $this->getLongitude());
-    }
 
 }

@@ -5,18 +5,8 @@ interface GeoDataProviderInterface
 {
 
     /**
-     * @return float
+     * @return null|GeoDataInterface
      */
-    public function getLatitude();
+    public function getGeoData();
 
-    /**
-     * @return float
-     */
-    public function getLongitude();
-
-
-    /**
-     * @return array[float]
-     */
-    public function getLatLon();
 }
