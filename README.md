@@ -26,6 +26,24 @@ use Germania\GeoData\GeoDataProviderInterface;
 
 ```php
 /**
+ * @return null|GeoDataInterface
+ */
+public function getGeoData();
+```
+
+
+
+### GeoDataInterface
+
+```php
+<?php
+use Germania\GeoData\GeoDataInterface;
+```
+
+#### Methods
+
+```php
+/**
  * @return float
  */
 public function getLatitude();
@@ -44,19 +62,21 @@ public function getLatLon();
 
 ## Traits
 
-The **GeoDataProviderTrait** provides public **latitude** and **longitude** properties as well as the methods 
-prescribed by **GeoDataProviderInterface:**
+### GeoDataTrait
+
+The **GeoDataTrait** provides public **latitude** and **longitude** properties as well as the methods 
+prescribed by **GeoDataInterface**:
 
 ```php
 <?php
-use Germania\GeoData\GeoDataProviderTrait;
+use Germania\GeoData\GeoDataTrait;
 
-class MyClass
+class MyGeoData
 {
-	use GeoDataProviderTrait;
+	use GeoDataTrait;
 }
 
-$object = new MyClass;
+$object = new MyGeoData;
 
 // Properties
 echo $object->latitude;
@@ -68,9 +88,33 @@ echo $object->getLongitude();
 $coords = $object->getLatLon();
 ```
 
+### GeoDataProviderTrait
+
+The **GeoDataProviderTrait** provides a public **geodata** property as well as a **getGeoData** method 
+prescribed by **GeoDataProviderInterface:**
+
+```php
+<?php
+use Germania\GeoData\GeoDataProviderTrait;
+
+class MyGeoDataProvider
+{
+	use GeoDataProviderTrait;
+}
+
+$object = new MyGeoDataProvider;
+
+// Properties
+$object->geodata;
+
+// GeoDataProviderInterface methods
+$object->getGeoData();
+
+```
+
 
 ## Filters
 
 ### NotEmptyGeoDataFilterIterator
 
-Accepts any **Traversable** and filters for **GeoDataProviderInterface** items whose *getLatitude* and *getLongitude* results are not empty.
+Accepts any **Traversable** and filters for **GeoDataInterface** or **GeoDataProviderInterface** items whose *getLatitude* and *getLongitude* results are not empty.

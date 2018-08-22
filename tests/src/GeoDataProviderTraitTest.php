@@ -1,6 +1,8 @@
 <?php
 namespace tests;
 
+use Germania\GeoData\GeoData;
+use Germania\GeoData\GeoDataInterface;
 use Germania\GeoData\GeoDataProviderInterface;
 use Germania\GeoData\GeoDataProviderTrait;
 
@@ -8,25 +10,27 @@ class GeoDataProviderTraitTest extends \PHPUnit\Framework\TestCase
 {
     public function testGetter()
     {
+
+        // Setup mocks
         $mock = $this->getMockForTrait(GeoDataProviderTrait::class);
 
         $latitude  = 54;
         $longitude = 10;
+        $latlon    = array( $latitude, $longitude );
+
+        $geodata_mock = $this->prophesize( GeoDataInterface::class );
+        $geodata_mock->getLatitude()->willReturn( $latitude );
+        $geodata_mock->getLongitude()->willReturn( $longitude );
+        $geodata_mock->getLatLon()->willReturn( $latlon );
 
         // Trait introduces this attribute
-        $this->assertObjectHasAttribute('latitude', $mock);
-        $this->assertObjectHasAttribute('longitude', $mock);
+        $this->assertObjectHasAttribute('geodata', $mock);
+        $mock->geodata  = $geodata_mock->reveal();
 
-        $mock->latitude  = $latitude;
-        $mock->longitude = $longitude;
+        $this->assertEquals( $latitude, $mock->getGeoData()->getLatitude());
+        $this->assertEquals( $longitude, $mock->getGeoData()->getLongitude());
 
-        $this->assertEquals( $latitude, $mock->getLatitude());
-        $this->assertEquals( $longitude, $mock->getLongitude());
 
-        $latlon = [
-            $latitude,
-            $longitude
-        ];
-        $this->assertEquals( $latlon, $mock->getLatLon());
+        $this->assertEquals( $latlon, $mock->getGeoData()->getLatLon());
     }
 }
