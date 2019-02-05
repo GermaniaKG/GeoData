@@ -1,35 +1,44 @@
 {
-	"name": "germania-kg/geodata",
-	"description": "Interfaces and traits for geo data",
+    "name": "germania-kg/geodata",
+    "description": "Interfaces and traits for geo data",
 
-	"license": "MIT",
+    "license": "MIT",
 
-	"authors": [
-		{
-			"name":  "Carsten Witt",
-			"email": "carstenwitt@germania-kg.de",
-			"role":  "Developer"
-		}
-	],
+    "authors": [
+        {
+            "name":  "Carsten Witt",
+            "email": "carstenwitt@germania-kg.de",
+            "role":  "Developer"
+        }
+    ],
 
-	"autoload": {
-		"psr-4": {
-			"Germania\\GeoData\\": "src"
-		}
-	},
+    "autoload": {
+        "psr-4": {
+            "Germania\\GeoData\\": "src"
+        }
+    },
 
-  "autoload-dev": {
-      "psr-4": {
-      	"tests\\": "tests/src"
-      }
-  },
+    "autoload-dev": {
+          "psr-4": {
+            "tests\\": "tests/src"
+          }
+    },
 
-	"require": {
-	},
+    "require": {
+        "php": "^5.6|^7.0"
+    },
 
-	"require-dev": {
-		"php-coveralls/php-coveralls": "^2.0",
-		"phpunit/phpunit": "^5.7|^6.0"
-	}
+    "require-dev": {
+        "php-coveralls/php-coveralls": "^2.0",
+        "phpunit/phpunit": "^5.7|^6.0|^7.0"
+    },
+
+    "scripts": {
+        "phpunit": "phpunit",
+
+        "test": [
+            "@phpunit"
+        ]
+    }
 
 }

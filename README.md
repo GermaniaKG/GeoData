@@ -1,9 +1,11 @@
 # Germania KG · GeoData
 
-[![Build Status](https://travis-ci.org/GermaniaKG/GeoData.svg?branch=master)](https://travis-ci.org/GermaniaKG/GeoData)
-[![Code Coverage](https://scrutinizer-ci.com/g/GermaniaKG/GeoData/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/GeoData/?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/GermaniaKG/GeoData/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/GeoData/?branch=master)
-[![Build Status](https://scrutinizer-ci.com/g/GermaniaKG/GeoData/badges/build.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/GeoData/build-status/master)
+[![PHP version](https://img.shields.io/packagist/php-v/germania-kg/geodata.svg)](https://packagist.org/packages/germania-kg/geodata)
+[![Build Status](https://img.shields.io/travis/GermaniaKG/Geodata.svg?label=Travis%20CI)](https://travis-ci.org/GermaniaKG/Geodata)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/GermaniaKG/Geodata/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Geodata/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/GermaniaKG/Geodata/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Geodata/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/GermaniaKG/Geodata/badges/build.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Geodata/build-status/master)
+
 
 ## Installation
 
@@ -118,3 +120,23 @@ $object->getGeoData();
 ### NotEmptyGeoDataFilterIterator
 
 Accepts any **Traversable** and filters for **GeoDataInterface** or **GeoDataProviderInterface** items whose *getLatitude* and *getLongitude* results are not empty.
+
+## Development
+
+```bash
+$ git clone https://github.com/GermaniaKG/Geodata.git
+$ cd Geodata
+$ composer install
+```
+
+## Unit tests
+
+Either copy `phpunit.xml.dist` to `phpunit.xml` and adapt to your needs, or leave as is. Run [PhpUnit](https://phpunit.de/) test or composer scripts like this:
+
+```bash
+$ composer test
+# or
+$ vendor/bin/phpunit
+```
+
+
