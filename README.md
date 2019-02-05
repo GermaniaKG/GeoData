@@ -1,10 +1,10 @@
 # Germania KG · GeoData
 
 [![PHP version](https://img.shields.io/packagist/php-v/germania-kg/geodata.svg)](https://packagist.org/packages/germania-kg/geodata)
-[![Build Status](https://img.shields.io/travis/GermaniaKG/Geodata.svg?label=Travis%20CI)](https://travis-ci.org/GermaniaKG/Geodata)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/GermaniaKG/Geodata/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Geodata/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/GermaniaKG/Geodata/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Geodata/?branch=master)
-[![Build Status](https://scrutinizer-ci.com/g/GermaniaKG/Geodata/badges/build.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Geodata/build-status/master)
+[![Build Status](https://img.shields.io/travis/GermaniaKG/GeoData.svg?label=Travis%20CI)](https://travis-ci.org/GermaniaKG/GeoData)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/GermaniaKG/GeoData/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Geodata/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/GermaniaKG/GeoData/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Geodata/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/GermaniaKG/GeoData/badges/build.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/GeoData/build-status/master)
 
 
 ## Installation
