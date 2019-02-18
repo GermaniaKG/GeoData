@@ -24,6 +24,8 @@ class NotEmptyGeoDataFilterIteratorTest extends \PHPUnit\Framework\TestCase
         $geodata_valid->getLatitude()->willReturn( 10.0 );
         $geodata_valid->getLongitude()->willReturn( 54.0 );
 
+        $geodata_valid_instance = $geodata_valid->reveal();
+
         $geodata_invalid1 = $this->prophesize( GeoDataInterface::class );
         $geodata_invalid1->getLatitude()->willReturn( null );
         $geodata_invalid1->getLongitude()->willReturn( 54.0 );
@@ -36,8 +38,12 @@ class NotEmptyGeoDataFilterIteratorTest extends \PHPUnit\Framework\TestCase
         $geodata_invalid3->getLatitude()->willReturn( null );
         $geodata_invalid3->getLongitude()->willReturn( null );
 
+        $geodata_provider_mock = $this->prophesize( GeoDataProviderInterface::class );
+        $geodata_provider_mock->getGeoData()->willReturn( $geodata_valid_instance );
+
         $mocks = array(
-            $geodata_valid->reveal(),
+            $geodata_provider_mock->reveal(),
+            $geodata_valid_instance,
             $geodata_invalid1->reveal(),
             $geodata_invalid2->reveal(),
             $geodata_invalid3->reveal(),
@@ -50,7 +56,7 @@ class NotEmptyGeoDataFilterIteratorTest extends \PHPUnit\Framework\TestCase
         $mocks_iterator = new \ArrayIterator( $mocks);
 
         // This is what we know from the above array
-        $valid_count = 1;
+        $valid_count = 2;
         // so array count minus $valid_count must be the "inversion"
         $invalid_count = count($mocks) - $valid_count;
 
