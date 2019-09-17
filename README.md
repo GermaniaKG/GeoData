@@ -1,3 +1,10 @@
+<img src="https://static.germania-kg.com/logos/ga-logo-2016-web.svgz" width="250px">
+
+------
+
+
+
+
 # Germania KG · GeoData
 
 [![Packagist](https://img.shields.io/packagist/v/germania-kg/geodata.svg?style=flat)](https://packagist.org/packages/germania-kg/geodata)
