@@ -7,6 +7,6 @@ interface GeoDataProviderInterface
     /**
      * @return null|GeoDataInterface
      */
-    public function getGeoData();
+    public function getGeoData() : ?GeoDataInterface;
 
 }
