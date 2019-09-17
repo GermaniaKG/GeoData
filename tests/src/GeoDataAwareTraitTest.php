@@ -2,8 +2,6 @@
 namespace tests;
 
 use Germania\GeoData\GeoData;
-use Germania\GeoData\GeoDataInterface;
-use Germania\GeoData\GeoDataAwareInterface;
 use Germania\GeoData\GeoDataAwareTrait;
 use Germania\GeoData\GeoDataProviderInterface;
 
