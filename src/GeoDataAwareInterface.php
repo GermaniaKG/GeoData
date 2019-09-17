@@ -1,7 +1,7 @@
 <?php
 namespace Germania\GeoData;
 
-interface GeoDataAwareInterface
+interface GeoDataAwareInterface extends GeoDataProviderInterface
 {
 
     /**
