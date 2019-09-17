@@ -13,7 +13,7 @@ trait GeoDataProviderTrait
     /**
      * @return null|GeoDataInterface
      */
-    public function getGeoData()
+    public function getGeoData() : ?GeoDataInterface
     {
         return $this->geodata;
     }
