@@ -18,7 +18,7 @@ trait GeoDataTrait
     /**
      * @return float
      */
-    public function getLatitude()
+    public function getLatitude() : ?float
     {
         return $this->latitude;
     }
@@ -26,7 +26,7 @@ trait GeoDataTrait
     /**
      * @return float
      */
-    public function getLongitude()
+    public function getLongitude() : ?float
     {
         return $this->longitude;
     }
@@ -35,7 +35,7 @@ trait GeoDataTrait
     /**
      * @return array[float]
      */
-    public function getLatLon()
+    public function getLatLon() : array
     {
         return array(
             $this->getLatitude(),

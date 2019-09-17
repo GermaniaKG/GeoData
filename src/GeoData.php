@@ -9,7 +9,7 @@ class GeoData extends GeoDataAbstract implements GeoDataInterface, GeoDataProvid
      * @param float $latitude
      * @param float $longitude
      */
-    public function __construct( $latitude, $longitude)
+    public function __construct( float $latitude, float $longitude)
     {
         $this->latitude  = $latitude;
         $this->longitude = $longitude;
@@ -19,7 +19,7 @@ class GeoData extends GeoDataAbstract implements GeoDataInterface, GeoDataProvid
     /**
      * @inheritDoc
      */
-    public function getGeoData()
+    public function getGeoData() : ?GeoDataInterface
     {
         return $this;
     }

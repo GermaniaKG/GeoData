@@ -6,15 +6,15 @@ interface GeoDataInterface
     /**
      * @return float
      */
-    public function getLatitude();
+    public function getLatitude() : ?float;
 
     /**
      * @return float
      */
-    public function getLongitude();
+    public function getLongitude() : ?float;
 
     /**
      * @return array[float]
      */
-    public function getLatLon();
+    public function getLatLon() : array;
 }
