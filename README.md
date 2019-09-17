@@ -34,8 +34,6 @@ $ composer require germania-kg/geodata
 use Germania\GeoData\GeoDataProviderInterface;
 ```
 
-#### Methods
-
 ```php
 /**
  * @return null|GeoDataInterface
@@ -51,8 +49,6 @@ public function getGeoData();
 <?php
 use Germania\GeoData\GeoDataInterface;
 ```
-
-#### Methods
 
 ```php
 /**
@@ -74,16 +70,16 @@ public function getLatLon();
 
 ## Traits
 
-### GeoDataTrait
+### GeoDataAbstract
 
-The **GeoDataTrait** provides public **latitude** and **longitude** properties as well as the methods 
+The **GeoDataAbstract** provides public **latitude** and **longitude** properties as well as the methods 
 prescribed by **GeoDataInterface**:
 
 ```php
 <?php
-use Germania\GeoData\GeoDataTrait;
+use Germania\GeoData\GeoDataAbstract;
 
-class MyGeoData
+class MyGeoData extends GeoDataAbstract
 {
 	use GeoDataTrait;
 }

@@ -18,6 +18,7 @@ class GeoData extends GeoDataAbstract implements GeoDataInterface, GeoDataProvid
 
     /**
      * @inheritDoc
+     * @return self
      */
     public function getGeoData() : ?GeoDataInterface
     {
