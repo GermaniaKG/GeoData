@@ -16,6 +16,20 @@ class GeoData extends GeoDataAbstract implements GeoDataInterface, GeoDataProvid
     }
 
 
+    public function setLatitude( ?float $latitude = null) : self
+    {
+        $this->latitude = $latitude;
+        return $this;
+    }
+
+
+    public function setLongitude( ?float $longitude = null) : self
+    {
+        $this->longitude = $longitude;
+        return $this;
+    }
+
+
     /**
      * @inheritDoc
      * @return self
