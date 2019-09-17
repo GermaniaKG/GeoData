@@ -34,8 +34,6 @@ $ composer require germania-kg/geodata
 use Germania\GeoData\GeoDataProviderInterface;
 ```
 
-#### Methods
-
 ```php
 /**
  * @return null|GeoDataInterface
@@ -52,8 +50,6 @@ public function getGeoData();
 use Germania\GeoData\GeoDataInterface;
 ```
 
-#### Methods
-
 ```php
 /**
  * @return float
@@ -67,38 +63,13 @@ public function getLongitude();
 
 
 /**
- * @return array[float]
+ * @return float[]
  */
 public function getLatLon();
 ```
 
+
 ## Traits
-
-### GeoDataTrait
-
-The **GeoDataTrait** provides public **latitude** and **longitude** properties as well as the methods 
-prescribed by **GeoDataInterface**:
-
-```php
-<?php
-use Germania\GeoData\GeoDataTrait;
-
-class MyGeoData
-{
-	use GeoDataTrait;
-}
-
-$object = new MyGeoData;
-
-// Properties
-echo $object->latitude;
-echo $object->longitude;
-
-// GeoDataProviderInterface methods
-echo $object->getLatitude();
-echo $object->getLongitude();
-$coords = $object->getLatLon();
-```
 
 ### GeoDataProviderTrait
 
@@ -116,13 +87,60 @@ class MyGeoDataProvider
 
 $object = new MyGeoDataProvider;
 
-// Properties
+// Property or GeoDataProviderInterface method
 $object->geodata;
-
-// GeoDataProviderInterface methods
 $object->getGeoData();
 
 ```
+
+
+
+## Classes
+
+### GeoDataAbstract
+
+The **GeoDataAbstract** provides public **latitude** and **longitude** properties as well as the methods 
+prescribed by **GeoDataInterface**:
+
+```php
+<?php
+use Germania\GeoData\GeoDataAbstract;
+
+class MyGeoData extends GeoDataAbstract
+{
+	use GeoDataTrait;
+}
+
+$object = new MyGeoData;
+
+// Properties
+echo $object->latitude;
+echo $object->longitude;
+
+// GeoDataProviderInterface methods
+echo $object->getLatitude();
+echo $object->getLongitude();
+$coords = $object->getLatLon();
+```
+
+
+
+### GeoData
+
+The **GeoData** class extends *GeoDataAbstract* and implements *GeoDataInterface* and also *GeoDataProviderInterface*:
+
+```php
+<?php
+use Germania\GeoData\GeoData;  
+
+$latitude = 54.0;
+$longitude = 10.0;
+
+$geo = new GeoData( $latitude,$longitude);
+
+$coords = $object->getLatLon(); // [ 54.0, 10.0]
+```
+
 
 
 ## Filters
@@ -130,6 +148,8 @@ $object->getGeoData();
 ### NotEmptyGeoDataFilterIterator
 
 Accepts any **Traversable** and filters for **GeoDataInterface** or **GeoDataProviderInterface** items whose *getLatitude* and *getLongitude* results are not empty.
+
+
 
 ## Development
 
