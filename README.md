@@ -96,6 +96,24 @@ echo $object->getLongitude();
 $coords = $object->getLatLon();
 ```
 
+### GeoData
+
+The **GeoData** class extends *GeoDataAbstract* and implements *GeoDataInterface* and also *GeoDataProviderInterface*:
+
+```php
+<?php
+use Germania\GeoData\GeoData;  
+
+$latitude = 54.0;
+$longitude = 10.0;
+
+$geo = new GeoData( $latitude,$longitude);
+
+$coords = $object->getLatLon(); // [ 54.0, 10.0]
+```
+
+
+
 ### GeoDataProviderTrait
 
 The **GeoDataProviderTrait** provides a public **geodata** property as well as a **getGeoData** method 
