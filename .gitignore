@@ -39,21 +39,14 @@ Thumbs.db
 Icon
 .AppleDouble
 
-# Project files      #
-######################
-config.json
-var/*
-logs/*
 
-# Workflow files     #
+# Project files      #
 ######################
 _schrott
 vendor
-node_modules
 var/*
-logs/*
-tests/build
-build
+tests/logs
 phpunit.xml
-
+.php_cs*
+.phpunit.result.cache
 
