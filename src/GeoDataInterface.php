@@ -22,4 +22,9 @@ interface GeoDataInterface
      * @return string|null
      */
     public function getSource() : ?string;
+
+    /**
+     * @return string|null
+     */
+    public function getStatus() : ?string;
 }

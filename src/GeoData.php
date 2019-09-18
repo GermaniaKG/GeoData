@@ -38,6 +38,13 @@ class GeoData extends GeoDataAbstract implements GeoDataInterface, GeoDataProvid
     }
 
 
+    public function setStatus( ?string $status = null) : self
+    {
+        $this->status = $status;
+        return $this;
+    }
+
+
     /**
      * @inheritDoc
      * @return self

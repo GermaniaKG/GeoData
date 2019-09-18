@@ -20,6 +20,11 @@ abstract class GeoDataAbstract implements GeoDataInterface
      */
     public $source;
 
+    /**
+     * @var string|null
+     */
+    public $status;
+
 
     /**
      * @inheritDoc
@@ -56,6 +61,15 @@ abstract class GeoDataAbstract implements GeoDataInterface
     public function getSource() : ?string
     {
         return $this->source;
+    }    
+
+
+    /**
+     * @inheritDoc
+     */
+    public function getStatus() : ?string
+    {
+        return $this->status;
     }    
 
 }
