@@ -52,12 +52,12 @@ use Germania\GeoData\GeoDataInterface;
 
 ```php
 /**
- * @return float
+ * @return float|null
  */
 public function getLatitude();
 
 /**
- * @return float
+ * @return float|null
  */
 public function getLongitude();
 
@@ -66,6 +66,11 @@ public function getLongitude();
  * @return float[]
  */
 public function getLatLon();
+
+/**
+ * @return string|null
+ */
+public function getSource();
 ```
 
 
@@ -133,12 +138,23 @@ The **GeoData** class extends *GeoDataAbstract* and implements *GeoDataInterface
 <?php
 use Germania\GeoData\GeoData;  
 
+// "Null" object
+$geo = new GeoData();
+$coords = $object->getLatLon();    // [ null, null]
+$coords = $object->getLatitude();  // null
+$coords = $object->getLongitude(); // null
+echo $geo->getSource(); // null
+
+// With real data
 $latitude = 54.0;
 $longitude = 10.0;
+$description = "provided by Google Maps";
 
-$geo = new GeoData( $latitude,$longitude);
+$geo = new GeoData( $latitude, $longitude, $description);
+$geo->setSource("Corrected manually");
 
 $coords = $object->getLatLon(); // [ 54.0, 10.0]
+echo $geo->getSource(); // "Corrected manually"
 ```
 
 

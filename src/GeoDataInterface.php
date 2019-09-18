@@ -17,4 +17,9 @@ interface GeoDataInterface
      * @return float[]
      */
     public function getLatLon() : array;
+
+    /**
+     * @return string|null
+     */
+    public function getSource() : ?string;
 }

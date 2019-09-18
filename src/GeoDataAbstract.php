@@ -15,6 +15,11 @@ abstract class GeoDataAbstract implements GeoDataInterface
      */
     public $longitude;
 
+    /**
+     * @var string|null
+     */
+    public $source;
+
 
     /**
      * @inheritDoc
@@ -43,5 +48,14 @@ abstract class GeoDataAbstract implements GeoDataInterface
             $this->getLongitude()
         );
     }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function getSource() : ?string
+    {
+        return $this->source;
+    }    
 
 }
