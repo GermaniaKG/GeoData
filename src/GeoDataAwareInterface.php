@@ -5,9 +5,9 @@ interface GeoDataAwareInterface extends GeoDataProviderInterface
 {
 
     /**
-     * @param null|GeoDataProviderInterface
+     * @param GeoDataProviderInterface
      * @return self
      */
-    public function setGeoData( ?GeoDataProviderInterface $geodata ) : self;
+    public function setGeoData( GeoDataProviderInterface $geodata ) : self;
 
 }

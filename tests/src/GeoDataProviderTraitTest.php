@@ -25,6 +25,9 @@ class GeoDataProviderTraitTest extends \PHPUnit\Framework\TestCase
 
         // Trait introduces this attribute
         $this->assertObjectHasAttribute('geodata', $mock);
+        $this->assertInstanceOf( GeoDataInterface::class, $mock->getGeoData());
+
+        // Now overwrite
         $mock->geodata  = $geodata_mock->reveal();
 
         $this->assertEquals( $latitude, $mock->getGeoData()->getLatitude());
