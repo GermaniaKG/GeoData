@@ -33,4 +33,14 @@ class GeoDataTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals( $latlon, $sut->getLatLon());
         $this->assertInstanceOf( GeoDataInterface::class, $sut->getGeoData() );
     }
+
+    public function testSourceMethods()
+    {
+        $sut = new GeoData;
+
+        $source = "foobar";
+        $sut->setSource( $source);
+
+        $this->assertEquals( $source, $sut->getSource());
+    }
 }

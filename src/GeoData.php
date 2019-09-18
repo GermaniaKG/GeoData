@@ -9,10 +9,11 @@ class GeoData extends GeoDataAbstract implements GeoDataInterface, GeoDataProvid
      * @param float $latitude
      * @param float $longitude
      */
-    public function __construct( ?float $latitude = null, ?float $longitude = null)
+    public function __construct( ?float $latitude = null, ?float $longitude = null, ?string $source = null)
     {
-        $this->latitude  = $latitude;
-        $this->longitude = $longitude;
+        $this->setLatitude( $latitude );
+        $this->setLongitude( $longitude );
+        $this->setSource( $source );
     }
 
 
@@ -30,6 +31,13 @@ class GeoData extends GeoDataAbstract implements GeoDataInterface, GeoDataProvid
     }
 
 
+    public function setSource( ?string $source = null) : self
+    {
+        $this->source = $source;
+        return $this;
+    }
+
+
     /**
      * @inheritDoc
      * @return self
@@ -38,5 +46,7 @@ class GeoData extends GeoDataAbstract implements GeoDataInterface, GeoDataProvid
     {
         return $this;
     }
+
+
 
 }
