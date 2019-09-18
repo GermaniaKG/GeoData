@@ -29,20 +29,6 @@ class GeoDataAwareTraitTest extends \PHPUnit\Framework\TestCase
     }
 
 
-    public function testSetterWithNull()
-    {
-        // Setup mocks
-        $aware_mock = $this->getMockForTrait(GeoDataAwareTrait::class);
-
-        $this->assertObjectHasAttribute('geodata', $aware_mock);
-        $aware_mock->setGeoData( null );
-
-        $geodata = $aware_mock->getGeoData();
-        $this->assertNull( $geodata );
-    }
-
-
-
     public function provideGeoData()
     {
         $latitude  = 54;

@@ -9,12 +9,21 @@ trait GeoDataProviderTrait
      */
     public $geodata;
 
+    /**
+     * The default GeoData class
+     * @var string FQDN
+     */
+    public $php_geodata_class = GeoData::class;
+
 
     /**
-     * @return null|GeoDataInterface
+     * @return GeoDataInterface
      */
-    public function getGeoData() : ?GeoDataInterface
+    public function getGeoData() : GeoDataInterface
     {
+        if (is_null($this->geodata))
+            $this->geodata = new $this->php_geodata_class;
+
         return $this->geodata;
     }
 

@@ -49,7 +49,7 @@ class GeoData extends GeoDataAbstract implements GeoDataInterface, GeoDataProvid
      * @inheritDoc
      * @return self
      */
-    public function getGeoData() : ?GeoDataInterface
+    public function getGeoData() : GeoDataInterface
     {
         return $this;
     }
