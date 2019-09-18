@@ -43,4 +43,14 @@ class GeoDataTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals( $source, $sut->getSource());
     }
+
+    public function testStatusMethods()
+    {
+        $sut = new GeoData;
+
+        $status = "foobar";
+        $sut->setStatus( $status);
+
+        $this->assertEquals( $status, $sut->getStatus());
+    }
 }

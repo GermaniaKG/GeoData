@@ -71,6 +71,11 @@ public function getLatLon();
  * @return string|null
  */
 public function getSource();
+
+/**
+ * @return string|null
+ */
+public function getStatus();
 ```
 
 
@@ -152,6 +157,7 @@ $description = "provided by Google Maps";
 
 $geo = new GeoData( $latitude, $longitude, $description);
 $geo->setSource("Corrected manually");
+$get->setStatus("Not too exact");
 
 $coords = $object->getLatLon(); // [ 54.0, 10.0]
 echo $geo->getSource(); // "Corrected manually"
