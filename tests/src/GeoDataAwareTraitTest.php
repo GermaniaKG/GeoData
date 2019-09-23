@@ -19,7 +19,7 @@ class GeoDataAwareTraitTest extends \PHPUnit\Framework\TestCase
         $aware_mock = $this->getMockForTrait(GeoDataAwareTrait::class);
 
         $this->assertObjectHasAttribute('geodata', $aware_mock);
-        $aware_mock->setGeoData( $provider );
+        $r = $aware_mock->setGeoData( $provider );
 
         $geodata = $provider->getGeoData();
 
@@ -43,6 +43,33 @@ class GeoDataAwareTraitTest extends \PHPUnit\Framework\TestCase
         return array(
             [ $geodata ],
             [ $provider_stub->reveal() ]
+        );
+    }
+
+
+
+    /**
+     * @dataProvider provideInvalidArguments
+     */
+    public function testExceptionOnInvalidArgument( $invalid_arg )
+    {
+        // Setup mocks
+        $aware_mock = $this->getMockForTrait(GeoDataAwareTrait::class);
+
+        $this->expectException( \InvalidArgumentException::class);
+        $this->expectException( \Exception::class);
+        $aware_mock->setGeoData( $invalid_arg );
+
+    }
+
+
+    public function provideInvalidArguments()
+    {
+        return array(
+            [ "string" ],
+            [ 99 ],
+            [ array() ],
+            [ new \StdClass ]
         );
     }
 }
