@@ -9,10 +9,10 @@ trait GeoDataAwareTrait
 
 
     /**
-     * @param GeoDataInterface
+     * @param GeoDataInterface|GeoDataProviderInterface
      * @return self
      */
-    public function setGeoData( $geodata ) : self
+    public function setGeoData( $geodata )
     {
         if ($geodata instanceOf GeoDataInterface):
             $this->geodata = $geodata;
