@@ -72,4 +72,18 @@ abstract class GeoDataAbstract implements GeoDataInterface
         return $this->status;
     }    
 
+    
+    /**
+     * @inheritDoc
+     */
+    public function jsonSerialize()
+    {
+        return array(
+            'latitude' => $this->getLatitude(),
+            'latitude' => $this->getLongitude(),
+            'source'   => $this->getSource(),
+            'status'   => $this->getStatus(),
+        );
+    }
+    
 }

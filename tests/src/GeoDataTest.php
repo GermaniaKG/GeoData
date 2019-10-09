@@ -17,6 +17,8 @@ class GeoDataTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf( GeoDataInterface::class, $sut);
         $this->assertInstanceOf( GeoDataProviderInterface::class, $sut);
+        $this->assertInstanceOf( \JsonSerializable::class, $sut);
+        $this->assertIsArray( $sut->jsonSerialize() );
     }
 
 
@@ -33,6 +35,7 @@ class GeoDataTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals( $latlon, $sut->getLatLon());
         $this->assertInstanceOf( GeoDataInterface::class, $sut->getGeoData() );
     }
+
 
     public function testSourceMethods()
     {
