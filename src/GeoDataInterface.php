@@ -1,7 +1,7 @@
 <?php
 namespace Germania\GeoData;
 
-interface GeoDataInterface
+interface GeoDataInterface extends \JsonSerializable
 {
     /**
      * @return float|null
