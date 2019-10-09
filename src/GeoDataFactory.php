@@ -4,7 +4,7 @@ namespace Germania\GeoData;
 class GeoDataFactory
 {
 
-	public function fromArray( array $geodata ) : GeoData
+	public function fromArray( array $geodata = null) : GeoData
 	{
 		$latitude  = $geodata['latitude'] ?? null;
 		$longitude = $geodata['longitude'] ?? null;
