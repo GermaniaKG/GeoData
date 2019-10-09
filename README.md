@@ -165,6 +165,28 @@ echo $geo->getSource(); // "Corrected manually"
 
 
 
+### GeoDataFactory
+
+The **GeoDataFactory** class provides a *fromArray* method:
+
+```php
+<?php
+use Germania\GeoData\GeoDataFactory;  
+use Germania\GeoData\GeoData;  
+
+$factory = new GeoDataFactory;
+
+// All these fields default to null
+$geodata = $factory([
+  'latitude'  => 54, 
+  'longitude' => 10, 
+  'source' => "Test case", 
+  'status' => "OK"  
+]);
+```
+
+
+
 ## Filters
 
 ### NotEmptyGeoDataFilterIterator
