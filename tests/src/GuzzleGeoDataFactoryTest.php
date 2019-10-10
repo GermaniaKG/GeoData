@@ -6,9 +6,8 @@ use GuzzleHttp\Exception\RequestException;
 
 use Germania\GeoData\GeoDataFactoryRuntimeException;
 use Germania\GeoData\GuzzleGeoDataFactory;
-use Germania\GeoData\GeoData;
 use Germania\GeoData\GeoDataInterface;
-use Germania\GeoData\GeoDataProviderInterface;
+
 use Prophecy\Argument;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerAwareInterface;
