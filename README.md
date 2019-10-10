@@ -193,7 +193,7 @@ $geodata = $factory([
 
 The **GuzzleGeoDataFactory** is a client for Germania's Geocoding API. It requires Guzzle, configured to ask Germania's GeoCoder API. 
 
-*Sorry, the API is non-public.* You may use the Factory class to cook your own HTTP-client-based GeoData factory.
+*Sorry, the API is not public.* You may use the Factory class to cook your own HTTP-client-based GeoData factory.
 
 ```php
 <?php
