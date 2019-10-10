@@ -165,6 +165,8 @@ echo $geo->getSource(); // "Corrected manually"
 
 
 
+## Factories
+
 ### GeoDataFactory
 
 The **GeoDataFactory** class provides a *fromArray* method:
@@ -183,6 +185,34 @@ $geodata = $factory([
   'source' => "Test case", 
   'status' => "OK"  
 ]);
+```
+
+
+
+### GuzzleGeoDataFactory
+
+The **GuzzleGeoDataFactory** is a client for Germania's Geocoding API. It requires Guzzle, configured to ask Germania's GeoCoder API. 
+
+*Sorry, the API is not public.* You may use the Factory class to cook your own HTTP-client-based GeoData factory.
+
+```php
+<?php
+use Germania\GeoData\GuzzleGeoDataFactory;
+use GuzzleHttp\Client as GuzzleClient;
+
+$guzzle = new GuzzleClient( ... );
+$factory = new GuzzleGeoDataFactory($guzzle);
+
+$geodata = $factory->fromString("Musterstraße 1, 12345 Musterstadt");
+echo get_class( $geodata ); // Germania\GeoData\GeoData
+```
+
+**Exceptions:** Just in case the Guzzle client throws an exception or the API response is invalid, watch out for these:
+
+```php
+<?php
+use Germania\GeoData\GeoDataExceptionInterface;
+use Germania\GeoData\GeoDataFactoryRuntimeException;
 ```
 
 
