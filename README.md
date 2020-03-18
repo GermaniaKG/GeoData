@@ -213,6 +213,9 @@ echo get_class( $geodata ); // Germania\GeoData\GeoData
 <?php
 use Germania\GeoData\GeoDataExceptionInterface;
 use Germania\GeoData\GeoDataFactoryRuntimeException;
+
+// For 404 ClientExceptions, extends GeoDataFactoryRuntimeException
+use Germania\GeoData\GeoDataFactoryNotFoundException;
 ```
 
 

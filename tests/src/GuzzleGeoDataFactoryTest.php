@@ -3,7 +3,9 @@ namespace tests;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ClientException;
 
+use Germania\GeoData\GeoDataFactoryNotFoundException;
 use Germania\GeoData\GeoDataFactoryRuntimeException;
 use Germania\GeoData\GuzzleGeoDataFactory;
 use Germania\GeoData\GeoDataInterface;
@@ -11,6 +13,7 @@ use Germania\GeoData\GeoDataProviderInterface;
 
 use Prophecy\Argument;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\RequestInterface;
 use Psr\Log\LoggerAwareInterface;
 
 class GuzzleGeoDataFactoryTest extends \PHPUnit\Framework\TestCase
@@ -72,6 +75,43 @@ class GuzzleGeoDataFactoryTest extends \PHPUnit\Framework\TestCase
         $sut->fromString("Somehow invalid");
 
     }
+
+    /**
+     * @dataProvider provideStatusCodesAndExceptionClasses
+     */
+    public function testClientExceptionOnRequest( $expected_status, $expected_exception_class)
+    {
+        // Prepare ResponseInterface
+        $response = $this->prophesize( ResponseInterface::class );
+        $response->getStatusCode()->willReturn( $expected_status );
+        $response_stub = $response->reveal();   
+
+        $request = $this->prophesize( RequestInterface::class );
+        $request_stub = $request->reveal();
+
+        $ce = new ClientException("Huhu!", $request_stub, $response_stub);
+
+        // Stub Guzzle 
+        $client = $this->prophesize(GuzzleClient::class);
+        $client->get( Argument::type('string'), Argument::type('array'))->willThrow( $ce );
+        $client_stub = $client->reveal();
+
+        // Setup SUT
+        $sut = new GuzzleGeoDataFactory( $client_stub );
+
+        $this->expectException( $expected_exception_class, $sut);
+        $sut->fromString("Somehow invalid");
+
+    }
+
+    public function provideStatusCodesAndExceptionClasses()
+    {
+        return array(
+            [ 400, GeoDataFactoryRuntimeException::class ],
+            [ 404, GeoDataFactoryNotFoundException::class ]
+        );
+    }
+
 
 
     /**
