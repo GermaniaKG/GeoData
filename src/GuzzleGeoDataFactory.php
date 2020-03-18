@@ -70,7 +70,7 @@ class GuzzleGeoDataFactory implements LoggerAwareInterface
 	/**
 	 * @param string $loglevel PSR-3 Loglevel name
 	 */
-	public function setClientRxceptionLoglevel( string $loglevel )
+	public function setClientExceptionLoglevel( string $loglevel )
 	{
 		$this->client_exception_loglevel = $loglevel;
 		return $this;

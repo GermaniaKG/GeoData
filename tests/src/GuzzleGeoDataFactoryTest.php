@@ -38,7 +38,7 @@ class GuzzleGeoDataFactoryTest extends \PHPUnit\Framework\TestCase
     {
         $res = $sut->setRequestExceptionLoglevel( "foo" );
         $this->assertSame($res, $sut);
-        $res = $sut->setClientRxceptionLoglevel( "foo" );        
+        $res = $sut->setClientExceptionLoglevel( "foo" );        
         $this->assertSame($res, $sut);
     }
 
