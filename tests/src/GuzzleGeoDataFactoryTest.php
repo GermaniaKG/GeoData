@@ -27,7 +27,21 @@ class GuzzleGeoDataFactoryTest extends \PHPUnit\Framework\TestCase
 
         $sut = new GuzzleGeoDataFactory( $client_stub );
         $this->assertInstanceOf(LoggerAwareInterface::class, $sut);
+
+        return $sut;
     }
+
+    /**
+     * @depends testInstantiation
+     */
+    public function testErrorLevelInterceptors( $sut )
+    {
+        $res = $sut->setRequestExceptionLoglevel( "foo" );
+        $this->assertSame($res, $sut);
+        $res = $sut->setClientRxceptionLoglevel( "foo" );        
+        $this->assertSame($res, $sut);
+    }
+
 
 
     public function testValidResult( )

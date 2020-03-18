@@ -59,6 +59,25 @@ class GuzzleGeoDataFactory implements LoggerAwareInterface
 
 
 	/**
+	 * @param string $loglevel PSR-3 Loglevel name
+	 */
+	public function setRequestExceptionLoglevel( string $loglevel )
+	{
+		$this->request_exception_loglevel = $loglevel;
+		return $this;
+	}
+
+	/**
+	 * @param string $loglevel PSR-3 Loglevel name
+	 */
+	public function setClientRxceptionLoglevel( string $loglevel )
+	{
+		$this->client_exception_loglevel = $loglevel;
+		return $this;
+	}
+
+
+	/**
 	 * @param  string $location [description]
 	 * @return GeoData
 	 * @throws \RuntimeException
@@ -88,7 +107,6 @@ class GuzzleGeoDataFactory implements LoggerAwareInterface
 					throw new GeoDataFactoryRuntimeException($msg, 0, $e);
 					break;
 			endswitch;
-
 		}		
 		catch (RequestException $e) {
 			$msg = sprintf("Request-related error on Geocoder API request: %s", $e->getMessage());
