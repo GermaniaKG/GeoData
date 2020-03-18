@@ -108,6 +108,7 @@ class GuzzleGeoDataFactoryTest extends \PHPUnit\Framework\TestCase
     {
         return array(
             [ 400, GeoDataFactoryRuntimeException::class ],
+            [ 404, GeoDataFactoryRuntimeException::class ],
             [ 404, GeoDataFactoryNotFoundException::class ]
         );
     }
