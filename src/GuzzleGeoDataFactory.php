@@ -14,7 +14,7 @@ use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
 use Psr\Log\LogLevel;
 
-class GuzzleGeoDataFactory implements LoggerAwareInterface
+class GuzzleGeoDataFactory implements StringGeoDataFactoryInterface, LoggerAwareInterface
 {
     use LoggerAwareTrait;
 
@@ -78,8 +78,7 @@ class GuzzleGeoDataFactory implements LoggerAwareInterface
 
 
     /**
-     * @param  string $location [description]
-     * @return GeoData
+     * @inheritDoc
      * @throws \RuntimeException
      */
     public function fromString(string $location): GeoData
