@@ -5,9 +5,12 @@ use Germania\GeoData\GeoData;
 use Germania\GeoData\GeoDataInterface;
 use Germania\GeoData\GeoDataProviderInterface;
 use Germania\GeoData\GeoDataProviderTrait;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class GeoDataProviderTraitTest extends \PHPUnit\Framework\TestCase
 {
+    use ProphecyTrait;
+
     public function testGetter()
     {
 

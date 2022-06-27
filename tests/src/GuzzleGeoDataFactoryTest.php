@@ -15,10 +15,11 @@ use Prophecy\Argument;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Log\LoggerAwareInterface;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class GuzzleGeoDataFactoryTest extends \PHPUnit\Framework\TestCase
 {
-
+    use ProphecyTrait;
 
     public function testInstantiation( )
     {

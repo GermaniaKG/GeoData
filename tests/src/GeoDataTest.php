@@ -4,9 +4,12 @@ namespace tests;
 use Germania\GeoData\GeoData;
 use Germania\GeoData\GeoDataInterface;
 use Germania\GeoData\GeoDataProviderInterface;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class GeoDataTest extends \PHPUnit\Framework\TestCase
 {
+    use ProphecyTrait;
+
     public function testInstantiation()
     {
         $latitude  = 54;

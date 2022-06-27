@@ -1,10 +1,9 @@
 <?php
+
 namespace Germania\GeoData;
 
 abstract class GeoDataAbstract implements GeoDataInterface
 {
-
-
     /**
      * @var float
      */
@@ -29,7 +28,7 @@ abstract class GeoDataAbstract implements GeoDataInterface
     /**
      * @inheritDoc
      */
-    public function getLatitude() : ?float
+    public function getLatitude(): ?float
     {
         return $this->latitude;
     }
@@ -37,7 +36,7 @@ abstract class GeoDataAbstract implements GeoDataInterface
     /**
      * @inheritDoc
      */
-    public function getLongitude() : ?float
+    public function getLongitude(): ?float
     {
         return $this->longitude;
     }
@@ -46,7 +45,7 @@ abstract class GeoDataAbstract implements GeoDataInterface
     /**
      * @inheritDoc
      */
-    public function getLatLon() : array
+    public function getLatLon(): array
     {
         return array(
             $this->getLatitude(),
@@ -58,21 +57,21 @@ abstract class GeoDataAbstract implements GeoDataInterface
     /**
      * @inheritDoc
      */
-    public function getSource() : ?string
+    public function getSource(): ?string
     {
         return $this->source;
-    }    
+    }
 
 
     /**
      * @inheritDoc
      */
-    public function getStatus() : ?string
+    public function getStatus(): ?string
     {
         return $this->status;
-    }    
+    }
 
-    
+
     /**
      * @inheritDoc
      */
@@ -85,5 +84,4 @@ abstract class GeoDataAbstract implements GeoDataInterface
             'status'   => $this->getStatus(),
         );
     }
-    
 }
