@@ -1,4 +1,5 @@
 <?php
+
 namespace Germania\GeoData;
 
 interface GeoDataInterface extends \JsonSerializable
@@ -6,25 +7,25 @@ interface GeoDataInterface extends \JsonSerializable
     /**
      * @return float|null
      */
-    public function getLatitude() : ?float;
+    public function getLatitude(): ?float;
 
     /**
      * @return float|null
      */
-    public function getLongitude() : ?float;
+    public function getLongitude(): ?float;
 
     /**
      * @return float[]
      */
-    public function getLatLon() : array;
+    public function getLatLon(): array;
 
     /**
      * @return string|null
      */
-    public function getSource() : ?string;
+    public function getSource(): ?string;
 
     /**
      * @return string|null
      */
-    public function getStatus() : ?string;
+    public function getStatus(): ?string;
 }

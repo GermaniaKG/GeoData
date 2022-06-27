@@ -1,9 +1,9 @@
 <?php
+
 namespace Germania\GeoData;
 
 trait GeoDataProviderTrait
 {
-
     /**
      * @var GeoDataInterface
      */
@@ -19,13 +19,12 @@ trait GeoDataProviderTrait
     /**
      * @return GeoDataInterface
      */
-    public function getGeoData() : GeoDataInterface
+    public function getGeoData(): GeoDataInterface
     {
-        if (is_null($this->geodata))
-            $this->geodata = new $this->php_geodata_class;
+        if (is_null($this->geodata)) {
+            $this->geodata = new $this->php_geodata_class();
+        }
 
         return $this->geodata;
     }
-
-
 }
