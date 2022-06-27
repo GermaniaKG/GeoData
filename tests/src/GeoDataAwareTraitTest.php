@@ -4,11 +4,13 @@ namespace tests;
 use Germania\GeoData\GeoData;
 use Germania\GeoData\GeoDataAwareTrait;
 use Germania\GeoData\GeoDataProviderInterface;
-
+use Prophecy\PhpUnit\ProphecyTrait;
 
 
 class GeoDataAwareTraitTest extends \PHPUnit\Framework\TestCase
 {
+    use ProphecyTrait;
+
 
     /**
      * @dataProvider provideGeoData

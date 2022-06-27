@@ -5,9 +5,11 @@ use Germania\GeoData\GeoDataFactory;
 use Germania\GeoData\GeoData;
 use Germania\GeoData\GeoDataInterface;
 use Germania\GeoData\GeoDataProviderInterface;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class GeoDataFactoryTest extends \PHPUnit\Framework\TestCase
 {
+    use ProphecyTrait;
 
     /**
      * @dataProvider provideArrayData
