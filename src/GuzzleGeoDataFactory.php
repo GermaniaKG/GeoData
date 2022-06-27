@@ -61,7 +61,7 @@ class GuzzleGeoDataFactory implements StringGeoDataFactoryInterface, LoggerAware
     /**
      * @param string $loglevel PSR-3 Loglevel name
      */
-    public function setRequestExceptionLoglevel(string $loglevel)
+    public function setRequestExceptionLoglevel(string $loglevel) : self
     {
         $this->request_exception_loglevel = $loglevel;
         return $this;
@@ -70,7 +70,7 @@ class GuzzleGeoDataFactory implements StringGeoDataFactoryInterface, LoggerAware
     /**
      * @param string $loglevel PSR-3 Loglevel name
      */
-    public function setClientExceptionLoglevel(string $loglevel)
+    public function setClientExceptionLoglevel(string $loglevel) : self
     {
         $this->client_exception_loglevel = $loglevel;
         return $this;
@@ -146,7 +146,7 @@ class GuzzleGeoDataFactory implements StringGeoDataFactoryInterface, LoggerAware
      *
      * @throws UnexpectedValueException
      */
-    protected function validateDecodedResponse($response_body_decoded)
+    protected function validateDecodedResponse($response_body_decoded) : void
     {
         // "data" is quite common in JsonAPI responses,
         // however, we need it as array.
