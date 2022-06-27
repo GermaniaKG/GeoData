@@ -14,20 +14,25 @@ class NotEmptyGeoDataFilterIterator extends \FilterIterator
      * @param \Traversable $collection       GeoDataProviderInterface instances
      * @param boolean      $not_empty_status
      */
-    public function __construct(\Traversable $collection, $not_empty_status = true)
+    public function __construct(\Traversable $collection, bool $not_empty_status = true)
     {
-        $this->not_empty_status = $not_empty_status;
+        $this->setNotEmptyStatus($not_empty_status);
 
         // Take care of Traversable's two faces,
         // since both IteratorAggregate and Iterator implement Traversable
         parent::__construct($collection instanceof \IteratorAggregate ? $collection->getIterator() : $collection);
     }
 
+    public function setNotEmptyStatus( bool $not_empty_status ) : self
+    {
+        $this->not_empty_status = $not_empty_status;
+        return $this;
+    }
 
     /**
      * @uses $not_empty_status
      */
-    public function accept()
+    public function accept() : bool
     {
         $item = $this->getInnerIterator()->current();
 
