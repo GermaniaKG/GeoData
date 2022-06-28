@@ -2,12 +2,7 @@
 
 namespace Germania\GeoData;
 
-use GuzzleHttp\Client as GuzzleClient;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Psr7;
-use Germania\GeoData\GeoData;
-use Germania\GeoData\GeoDataFactory;
+use GuzzleHttp;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
@@ -47,10 +42,10 @@ class GuzzleGeoDataFactory implements StringGeoDataFactoryInterface, LoggerAware
 
 
     /**
-     * @param GuzzleClient    $http_client Guzzle Client, configured for Germania's GeoCoder API
-     * @param LoggerInterface $logger          PSR-3 Logger
+     * @param \GuzzleHttp\Client $http_client  Guzzle Client, configured for Germania's GeoCoder API
+     * @param LoggerInterface    $logger       PSR-3 Logger
      */
-    public function __construct(GuzzleClient $http_client, LoggerInterface $logger = null)
+    public function __construct(GuzzleHttp\Client $http_client, LoggerInterface $logger = null)
     {
         $this->http_client = $http_client;
         $this->geodata_factory = new GeoDataFactory();
@@ -84,11 +79,11 @@ class GuzzleGeoDataFactory implements StringGeoDataFactoryInterface, LoggerAware
     public function fromString(string $location): GeoData
     {
         try {
-            // Guzzle client returns ResponseInterface!
-            $response = $this->http_client->get($this->url_path, [
-                "query" => ['search' => $location]
-            ]);
-        } catch (ClientException $e) {
+            $uri  = (new GuzzleHttp\Psr7\Uri($this->url_path))->withQuery(http_build_query(['search' => $location]));
+            $response = $this->http_client->request("GET", $uri->__toString());
+
+        }
+        catch (GuzzleHttp\Exception\ClientException $e) {
             $e_response = $e->getResponse();
             $e_status = $e_response->getStatusCode();
 
@@ -97,15 +92,16 @@ class GuzzleGeoDataFactory implements StringGeoDataFactoryInterface, LoggerAware
                 'exception' => get_class($e)
             ]);
 
-            switch ($e_status):
+            switch ($e_status) {
                 case 404:
                     throw new GeoDataFactoryNotFoundException($msg, 0, $e);
-            break;
-            default:
+                    break;
+                default:
                     throw new GeoDataFactoryRuntimeException($msg, 0, $e);
-            break;
-            endswitch;
-        } catch (RequestException $e) {
+                    break;
+            }
+
+        } catch (GuzzleHttp\Exception\RequestException $e) {
             $msg = sprintf("Request-related error on Geocoder API request: %s", $e->getMessage());
             $this->logger->log($this->request_exception_loglevel, $msg, [
                 'exception' => get_class($e)

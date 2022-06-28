@@ -63,7 +63,7 @@ class GuzzleGeoDataFactoryTest extends \PHPUnit\Framework\TestCase
 
         // Stub Guzzle 
         $client = $this->prophesize(GuzzleClient::class);
-        $client->get( Argument::type('string'), Argument::type('array'))->willReturn( $response_stub );
+        $client->request( Argument::type('string'), Argument::type('string'))->willReturn( $response_stub );
         $client_stub = $client->reveal();
 
         // Setup SUT
@@ -80,7 +80,7 @@ class GuzzleGeoDataFactoryTest extends \PHPUnit\Framework\TestCase
     {
         // Stub Guzzle 
         $client = $this->prophesize(GuzzleClient::class);
-        $client->get( Argument::type('string'), Argument::type('array'))->willThrow( RequestException::class );
+        $client->request( Argument::type('string'), Argument::type('string'))->willThrow( RequestException::class );
         $client_stub = $client->reveal();
 
         // Setup SUT
@@ -108,7 +108,8 @@ class GuzzleGeoDataFactoryTest extends \PHPUnit\Framework\TestCase
 
         // Stub Guzzle 
         $client = $this->prophesize(GuzzleClient::class);
-        $client->get( Argument::type('string'), Argument::type('array'))->willThrow( $ce );
+        // $client->get( Argument::type('string'), Argument::type('array'))->willThrow( $ce );
+        $client->request( Argument::type('string'), Argument::type('string'))->willThrow( $ce );
         $client_stub = $client->reveal();
 
         // Setup SUT
@@ -143,7 +144,7 @@ class GuzzleGeoDataFactoryTest extends \PHPUnit\Framework\TestCase
 
         // Stub Guzzle 
         $client = $this->prophesize(GuzzleClient::class);
-        $client->get( Argument::type('string'), Argument::type('array'))->willReturn( $response_stub );
+        $client->request( Argument::type('string'), Argument::type('string'))->willReturn( $response_stub );
         $client_stub = $client->reveal();
 
         // Setup SUT
