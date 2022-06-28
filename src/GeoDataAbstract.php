@@ -75,6 +75,7 @@ abstract class GeoDataAbstract implements GeoDataInterface
     /**
      * @inheritDoc
      */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         return array(
