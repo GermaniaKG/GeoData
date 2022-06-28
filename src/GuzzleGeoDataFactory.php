@@ -3,11 +3,6 @@
 namespace Germania\GeoData;
 
 use GuzzleHttp;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Psr7;
-use Germania\GeoData\GeoData;
-use Germania\GeoData\GeoDataFactory;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
@@ -84,11 +79,11 @@ class GuzzleGeoDataFactory implements StringGeoDataFactoryInterface, LoggerAware
     public function fromString(string $location): GeoData
     {
         try {
-            // Guzzle client returns ResponseInterface!
-            $response = $this->http_client->get($this->url_path, [
-                "query" => ['search' => $location]
-            ]);
-        } catch (ClientException $e) {
+            $uri  = (new GuzzleHttp\Psr7\Uri($this->url_path))->withQuery(http_build_query(['search' => $location]));
+            $response = $this->http_client->request("GET", $uri->__toString());
+
+        }
+        catch (GuzzleHttp\Exception\ClientException $e) {
             $e_response = $e->getResponse();
             $e_status = $e_response->getStatusCode();
 
@@ -106,7 +101,7 @@ class GuzzleGeoDataFactory implements StringGeoDataFactoryInterface, LoggerAware
                     break;
             }
 
-        } catch (RequestException $e) {
+        } catch (GuzzleHttp\Exception\RequestException $e) {
             $msg = sprintf("Request-related error on Geocoder API request: %s", $e->getMessage());
             $this->logger->log($this->request_exception_loglevel, $msg, [
                 'exception' => get_class($e)

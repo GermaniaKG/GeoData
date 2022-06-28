@@ -14,11 +14,15 @@ trait GeoDataAwareTrait
      */
     public function setGeoData($geodata) : self
     {
-        if ($geodata instanceof GeoDataInterface):
-            $this->geodata = $geodata; elseif ($geodata instanceof GeoDataProviderInterface):
-            $this->geodata = $geodata->getGeoData(); else:
+        if ($geodata instanceof GeoDataInterface) {
+            $this->geodata = $geodata;
+        }
+        elseif ($geodata instanceof GeoDataProviderInterface) {
+            $this->geodata = $geodata->getGeoData();
+        }
+        else {
             throw new \InvalidArgumentException("GeoDataInterface or GeoDataProviderInterface expected");
-        endif;
+        }
 
         return $this;
     }
