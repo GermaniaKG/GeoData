@@ -51,3 +51,4 @@ phpunit.xml
 .php_cs*
 .phpunit.result.cache
 
+phpstan.neon
