@@ -80,7 +80,7 @@ abstract class GeoDataAbstract implements GeoDataInterface
     {
         return array(
             'latitude' => $this->getLatitude(),
-            'latitude' => $this->getLongitude(),
+            'longitude' => $this->getLongitude(),
             'source'   => $this->getSource(),
             'status'   => $this->getStatus(),
         );

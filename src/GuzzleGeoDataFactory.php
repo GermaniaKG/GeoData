@@ -140,7 +140,7 @@ class GuzzleGeoDataFactory implements StringGeoDataFactoryInterface, LoggerAware
      * @param  mixed $response_body_decoded
      * @return void
      *
-     * @throws UnexpectedValueException
+     * @throws \UnexpectedValueException
      */
     protected function validateDecodedResponse($response_body_decoded) : void
     {
